@@ -19,34 +19,19 @@
 
 using namespace std;
 
-bool prime(int x)
-{
-    if(x < 2) return false;
-    if(x == 2) return true;
-    for(int i = 2; i*i <= x; i++){
-        if(x % i == 0) return false;
-    }
-    return true;
-}
-
 int main()
 {
     optimize;
-    int size; 
-    cin >> size;
-    int j = 0;
-    while(j < size)
-    {
-        for(int i = 6; i <= 10000000; i++)
-        {
-            if(prime(i))
-            {
-                cout << i << " ";
-                j++;
-            }
-            if(j == size)
-                break;
-        }
-    }
-    cout << '\n';
+    string a, b;
+    cin >> a >> b;
+    for (char &c : a)
+        c = tolower(c);
+    for(char &x : b)
+        x = tolower(x);
+    if(a < b)
+        cout << "-1" << '\n';
+    else if(a > b)
+        cout << "1" << '\n';
+    else
+        cout << "0" << '\n';
 }

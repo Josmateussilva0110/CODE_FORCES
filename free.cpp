@@ -16,37 +16,32 @@
 #define MAXL 23
 #define EPS 1e-9
 #define endl '\n'
-
+ 
 using namespace std;
-
-bool prime(int x)
-{
-    if(x < 2) return false;
-    if(x == 2) return true;
-    for(int i = 2; i*i <= x; i++){
-        if(x % i == 0) return false;
-    }
-    return true;
-}
-
+ 
 int main()
 {
     optimize;
-    int size; 
+    int size;
+    vector<pair<int, int>> freq;
     cin >> size;
-    int j = 0;
-    while(j < size)
+    while(size--)
     {
-        for(int i = 6; i <= 10000000; i++)
-        {
-            if(prime(i))
-            {
-                cout << i << " ";
-                j++;
-            }
-            if(j == size)
-                break;
-        }
+        int a, b;
+        cin >> a >> b;
+        freq.PB({a, b});
     }
-    cout << '\n';
+    map <int, int> a;
+    for(auto x: freq)
+    {
+        int v = x.first * 60 + x.second;
+        a[v]++;
+    }
+    int ans = 1;
+    for(auto x: a)
+    {
+        if(x.second > ans)
+            ans = x.second;
+    }
+    cout << ans << '\n';
 }

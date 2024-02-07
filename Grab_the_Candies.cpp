@@ -17,36 +17,30 @@
 #define EPS 1e-9
 #define endl '\n'
 
+
 using namespace std;
 
-bool prime(int x)
-{
-    if(x < 2) return false;
-    if(x == 2) return true;
-    for(int i = 2; i*i <= x; i++){
-        if(x % i == 0) return false;
-    }
-    return true;
-}
-
-int main()
+int main() 
 {
     optimize;
     int size; 
     cin >> size;
-    int j = 0;
-    while(j < size)
+    while(size--)
     {
-        for(int i = 6; i <= 10000000; i++)
+        int tam; 
+        cin >> tam;
+        vi par, impar;
+        int value; 
+        for(int i = 0; i < tam; i++)
         {
-            if(prime(i))
-            {
-                cout << i << " ";
-                j++;
-            }
-            if(j == size)
-                break;
+            cin >> value;
+            if(value % 2 == 0)
+                par.PB(value);
+            else
+                impar.PB(value);
         }
+        int sp = accumulate(par.begin(), par.end(), 0);
+        int si = accumulate(impar.begin(), impar.end(), 0);
+        cout << ((sp > si) ? "YES" : "NO") << '\n';
     }
-    cout << '\n';
 }

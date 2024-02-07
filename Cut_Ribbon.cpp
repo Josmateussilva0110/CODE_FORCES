@@ -19,34 +19,27 @@
 
 using namespace std;
 
-bool prime(int x)
-{
-    if(x < 2) return false;
-    if(x == 2) return true;
-    for(int i = 2; i*i <= x; i++){
-        if(x % i == 0) return false;
-    }
-    return true;
-}
-
 int main()
 {
     optimize;
-    int size; 
-    cin >> size;
-    int j = 0;
-    while(j < size)
+    int n, a, b, c;
+    cin >> n >> a >> b >> c;
+
+    if(n == a && n == b && n == c)
+        cout << "1" << '\n';
+    else if(a == 1 || b == 1 || c == 1)
+        cout << n << '\n';
+    else
     {
-        for(int i = 6; i <= 10000000; i++)
+        int min_value = min({a, b, c});
+        int ans = 0;
+
+        while (n >= min_value)
         {
-            if(prime(i))
-            {
-                cout << i << " ";
-                j++;
-            }
-            if(j == size)
-                break;
+            n -= min_value;
+            ans++;
         }
+
+        cout << ans << '\n';
     }
-    cout << '\n';
 }

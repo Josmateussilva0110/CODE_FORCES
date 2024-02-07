@@ -19,34 +19,23 @@
 
 using namespace std;
 
-bool prime(int x)
-{
-    if(x < 2) return false;
-    if(x == 2) return true;
-    for(int i = 2; i*i <= x; i++){
-        if(x % i == 0) return false;
-    }
-    return true;
-}
-
 int main()
 {
     optimize;
-    int size; 
+    int size;
     cin >> size;
-    int j = 0;
-    while(j < size)
+    map <string, int> freq;
+    while(size--)
     {
-        for(int i = 6; i <= 10000000; i++)
+        string name;
+        cin >> name;
+        freq[name]++;
+        for(const auto &x: freq)
         {
-            if(prime(i))
-            {
-                cout << i << " ";
-                j++;
-            }
-            if(j == size)
-                break;
+            if(x.second == 1)
+                cout << "OK" << '\n';
+            else if(x.second > 1)
+                cout << x.first << x.second-1 << '\n';
         }
     }
-    cout << '\n';
 }

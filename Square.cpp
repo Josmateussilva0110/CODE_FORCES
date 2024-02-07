@@ -16,37 +16,30 @@
 #define MAXL 23
 #define EPS 1e-9
 #define endl '\n'
-
+ 
 using namespace std;
-
-bool prime(int x)
-{
-    if(x < 2) return false;
-    if(x == 2) return true;
-    for(int i = 2; i*i <= x; i++){
-        if(x % i == 0) return false;
-    }
-    return true;
-}
-
+ 
 int main()
 {
     optimize;
-    int size; 
-    cin >> size;
-    int j = 0;
-    while(j < size)
+    int size;
+    cin >> size; 
+    while(size--)
     {
-        for(int i = 6; i <= 10000000; i++)
+        int max_x = 0, max_y = 0;
+        int min_x = 1001, min_y = 1001;
+        int x, y;
+        for(int i = 0; i < 4; i++)
         {
-            if(prime(i))
-            {
-                cout << i << " ";
-                j++;
-            }
-            if(j == size)
-                break;
+            cin >> x >> y;
+            max_x = max(x, max_x);
+            max_y = max(y, max_y);
+            min_x = min(x, min_x);
+            min_y = min(y, min_y);
         }
+        int lado = max_x - min_x;
+        int lado2 = max_y - min_y;
+        int ans = lado * lado2;
+        cout << ans << '\n';
     }
-    cout << '\n';
 }

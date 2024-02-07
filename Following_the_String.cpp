@@ -16,37 +16,28 @@
 #define MAXL 23
 #define EPS 1e-9
 #define endl '\n'
-
+ 
 using namespace std;
 
-bool prime(int x)
-{
-    if(x < 2) return false;
-    if(x == 2) return true;
-    for(int i = 2; i*i <= x; i++){
-        if(x % i == 0) return false;
-    }
-    return true;
-}
-
-int main()
+int main() 
 {
     optimize;
-    int size; 
+    int size;
     cin >> size;
-    int j = 0;
-    while(j < size)
+    while(size--)
     {
-        for(int i = 6; i <= 10000000; i++)
+        int tam;
+        cin >> tam;
+        vi array(tam);
+        for(int i = 0; i < tam; i++)
+            cin >> array[i];
+        vi freq(26, 0);
+        string ans(tam, ' ');
+        for (int i = 0; i < tam; i++) 
         {
-            if(prime(i))
-            {
-                cout << i << " ";
-                j++;
-            }
-            if(j == size)
-                break;
+            ans[i] = freq[array[i]] + 'a';
+            freq[array[i]]++;
         }
+        cout << ans << '\n';
     }
-    cout << '\n';
 }
