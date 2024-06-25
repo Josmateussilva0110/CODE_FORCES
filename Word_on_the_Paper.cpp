@@ -23,34 +23,14 @@ int main()
     int size; cin >> size;
     while(size--)
     {
-        char array[8][8];
-        vi count_R;
         for(int i = 0; i < 8; i++)
         {
             for(int j = 0; j < 8; j++)
             {
-                cin >> array[i][j];
-                if(array[i][j] == 'R')
-                    count_R.PB(i);
+                char v; cin >> v;
+                if(v != '.') cout << v;
             }
         }
-        bool valid_2 = true;
-        for(int i: count_R)
-        {
-            bool valid = true;
-            for(int j = 0; j < 8; j++)
-                if(array[i][j] != 'R')
-                {
-                    valid = false;
-                    break;
-                }
-            if(valid) 
-            {
-                cout << "R" << '\n';
-                valid_2 = false;
-                break;
-            }
-        }
-        if (valid_2) cout << "B" << '\n';
+        cout << '\n';
     }
-}   
+}

@@ -22,10 +22,7 @@
 #define endl '\n'
 
 using namespace std;
-#define ordered_set tree<os_type, null_type,less<os_type>, rb_tree_tag,tree_order_statistics_node_update>
 
-
-using namespace std;
 
 int main()
 {
@@ -35,41 +32,25 @@ int main()
     while(size--)
     {
         map<string, int> freq;
-        int quant;
-        cin >> quant;
-        vector<string> palavras(quant);
+        int tam; cin >> tam;
+        string word[3][tam];
         for(int i = 0; i < 3; i++)
         {
-            for(int j = 0; j < quant; j++)
+            for(int j = 0; j < tam; j++)
             {
-                cin >> palavras[j];
-                freq[palavras[j]]++;
+                cin >> word[i][j]; freq[word[i][j]]++;
             }
         }
-        string maior_palavra;
-        int max_occur = 0;
-
-        for (const auto& x : freq) 
-        {
-            if (x.second > max_occur) 
-            {
-                max_occur = x.second;
-                maior_palavra = x.first;
-            }
-        }
-        vector<int> ans(3, 0);
         for(int i = 0; i < 3; i++)
         {
-            for(int j = 0; j < quant; j++)
+            int ans = 0;
+            for(int j = 0; j < tam; j++)
             {
-                if(palavras[j] == maior_palavra)
-                    ans[i]+= 1;
-                else if (palavras[j] != maior_palavra)
-                    ans[i] += 3;
+                if(freq[word[i][j]] == 1) ans +=3;
+                if(freq[word[i][j]] == 2) ans +=1;
             }
+            cout << ans << " ";
         }
-        for(auto x: ans)
-            cout << x << " ";
-        cout << endl;
+        cout << '\n';
     }
 }
